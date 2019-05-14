@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Necklaces</title>
+
+    <style>
+        html {
+            font-family: sans-serif;
+        }
+        button.sign {
+            padding: 0em;
+            font-size: 1em;
+        }
+    </style>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=default" async></script>
+</head>
+
+<body>
+    <div id=app_el>
+        <Numeric :initial=n @onchange="val => n = val">n — beads number</Numeric>
+        <Numeric :initial=k @onchange="val => k = val">k — colors number</Numeric>
+        <Necklaces :n=n :k=k></Necklaces>
+        <Calculation :n=n :k=k></Calculation>
+    </div>
+    <script type=module>
+        import Vue from './vue.mjs'
+        import Necklaces from './hello.mjs';
+        import Numeric from './numeric.mjs';
+        import Calculation from './calculation.mjs';
+        const app = new Vue({
+            components: {
+                Necklaces,
+                Numeric,
+                Calculation,
+            },
+            data: {
+                n: 4,
+                k: 2,
+            },
+            el: app_el,
+        })
+    </script>
+</body>
+
+</html>
